@@ -23,8 +23,7 @@ The first one, **AkadeKlik Student** as the name suggests, is intended for stude
 ## Screenshots
 
 - Initial page
-
-![App Screenshot](https://i.imgur.com/yEVNL3I.png)
+<img src="https://i.imgur.com/yEVNL3I.png" height="420" />
 
 - Admin login
 
@@ -75,7 +74,7 @@ The first one, **AkadeKlik Student** as the name suggests, is intended for stude
 ![App Screenshot](https://i.imgur.com/1gcZtsk.png)
 
 - Student home page on mobile phone
-<img src="https://i.imgur.com/qYI83NL.jpg" height="400" />
+<img src="https://i.imgur.com/qYI83NL.jpg" height="420" />
 
 - Admin home page on mobile phone
 <img src="https://i.imgur.com/bLAN2IK.jpg" height="400" />
