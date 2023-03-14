@@ -40,8 +40,7 @@ The first one, **AkadeKlik Student** as the name suggests, is intended for stude
 ![App Screenshot](https://i.imgur.com/7m0SVQN.png)
 
 - Student registration page
-
-![App Screenshot](https://i.imgur.com/8O2r9qo.png)
+<img src="https://i.imgur.com/8O2r9qo.png" width="750" />
 
 - Student list page
 
