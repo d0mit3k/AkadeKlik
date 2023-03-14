@@ -80,7 +80,7 @@ The first one, **AkadeKlik Student** as the name suggests, is intended for stude
 
 - Admin home page on mobile phone
 
-![App Screenshot](https://i.imgur.com/bLAN2IK.jpg)
+![App Screenshot|500](https://i.imgur.com/bLAN2IK.jpg)
 
 ## Tech Stack
 
