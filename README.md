@@ -26,12 +26,10 @@ The first one, **AkadeKlik Student** as the name suggests, is intended for stude
 <img src="https://i.imgur.com/yEVNL3I.png" height="420" />
 
 - Admin login
-
-![App Screenshot](https://i.imgur.com/S1iPOGt.png)
+<img src="https://i.imgur.com/S1iPOGt.png" height="420" />
 
 - Student login
-
-![App Screenshot](https://i.imgur.com/ycTlz14.png)
+<img src="https://i.imgur.com/ycTlz14.png" height="420" />
 
 - Admin home page
 
@@ -58,8 +56,7 @@ The first one, **AkadeKlik Student** as the name suggests, is intended for stude
 ![App Screenshot](https://i.imgur.com/FSZ721Q.png)
 
 - Detailed information about dormitory
-
-![App Screenshot](https://i.imgur.com/QELwZ5w.png)
+<img src="https://i.imgur.com/QELwZ5w.png" width="750" />
 
 - Complaints page
 
@@ -74,7 +71,7 @@ The first one, **AkadeKlik Student** as the name suggests, is intended for stude
 ![App Screenshot](https://i.imgur.com/1gcZtsk.png)
 
 - Student home page on mobile phone
-<img src="https://i.imgur.com/qYI83NL.jpg" height="420" />
+<img src="https://i.imgur.com/qYI83NL.jpg" height="430" />
 
 - Admin home page on mobile phone
 <img src="https://i.imgur.com/bLAN2IK.jpg" height="400" />
