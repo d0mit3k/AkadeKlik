@@ -1,0 +1,200 @@
+doctype html
+head
+  meta(charset='utf-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
+  meta(name='description' content='')
+  meta(name='author' content='')
+  link(rel='icon' href='assets/img/admico.ico' type='image/x-icon')
+  title Dodaj ogłoszenie - AkadeKlik
+  link(rel='stylesheet' href='assets/css/app.css')
+  link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Josefin%20Sans')
+  script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js")
+  script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js")
+  script(src="https://cdn.jsdelivr.net/npm/sweetalert2@11")
+  style.
+    .loader {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #F5F8FA;
+    z-index: 9998;
+    text-align: center;
+    }
+    .plane-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    }
+    h1.logo {
+    font-family: "Josefin Sans", sans-serif;
+    font-weight: bold;
+    }
+    img.logo {
+    width: 60px;
+    }
+    .purple {
+      background-color: #714eff !important;
+    }
+        li.active {
+      background-color: #ecf0f5 !important;
+      opacity: 0.9;
+    }
+    a.active {
+      color: black !important;
+    }
+    .offcanvas .sidebar-menu>li.active:after {
+      background-color: #714eff !important;
+      opacity: 0.75;
+    }
+    .paper-nav-toggle i:before,:after{
+      background-color: white !important;
+    }
+    .paper-nav-toggle i{
+      background-color: white !important;
+    }
+    .table th {
+      border-top: none;
+    }
+    .count{
+      text-align: left !important;
+    }
+    td.status {
+      min-width:149px;
+    }
+#loader.loader
+  .plane-container
+    .preloader-wrapper.small.active
+      .spinner-layer.spinner-blue
+        .circle-clipper.left
+          .circle
+        .gap-patch
+          .circle
+        .circle-clipper.right
+          .circle
+      .spinner-layer.spinner-red
+        .circle-clipper.left
+          .circle
+        .gap-patch
+          .circle
+        .circle-clipper.right
+          .circle
+      .spinner-layer.spinner-yellow
+        .circle-clipper.left
+          .circle
+        .gap-patch
+          .circle
+        .circle-clipper.right
+          .circle
+      .spinner-layer.spinner-green
+        .circle-clipper.left
+          .circle
+        .gap-patch
+          .circle
+        .circle-clipper.right
+          .circle
+#app
+  aside.main-sidebar.fixed.offcanvas.shadow(data-toggle='offcanvas')
+    section.sidebar
+      .relative
+        .user-panel.p-3.light.mb-2
+          div
+            .float-left.image
+              img.logo(src='assets/img/logo.png')
+            .float-right.info
+              h1.logo.mt-3.mr-3 AkadeKlik
+      ul.sidebar-menu
+        li.header
+          strong Menu
+        li.treeview
+          a(href='/admin_panel')
+            i.icon.icon-home2.purple-text.s-18
+            | Strona g&lstrok;&oacute;wna
+        li.treeview
+          a(href='/studentreg')
+            i.icon.icon-document-add.light-green-text.s-18
+            | Rejestracja studenta
+        li.treeview
+          a(href='/studentdetails')
+            i.icon.icon-account_box.text-blue.s-18
+            | Lista student&oacute;w
+        li.treeview
+          a(href='/hosteldetails')
+            i.icon.icon-note-list.text-black.s-18
+            | Lista akademik&oacute;w
+        li.treeview
+          a(href='/complaint')
+            i.icon.icon-flag3.text-red.s-18
+            | Skargi
+        li.treeview
+          a(href='/attendance')
+            i.icon.icon-check.light-green-text.s-18
+            | Frekwencja
+        li.treeview
+          a(href='/leave')
+            i.icon.icon-brightness_2.text-blue.s-18
+            | Nocne wyj&sacute;cie
+        li.treeview.active
+          a.active(href='/noticeupdate')
+            i.icon.icon-megaphone.purple-text.s-18
+            | Dodaj og&lstrok;oszenie
+
+  .has-sidebar-left
+    .pos-f-t
+      #navbarToggleExternalContent.collapse
+        .bg-dark.pt-2.pb-2.pl-4.pr-2
+          a(href='#' data-toggle='collapse' data-target='#navbarToggleExternalContent' aria-expanded='false' aria-label='Toggle navigation')
+            i
+    .sticky
+      .navbar.navbar-expand.navbar-dark.d-flex.justify-content-between.bd-navbar.deep-purple.accent-2.text-white
+        .relative
+          a.paper-nav-toggle.pp-nav-toggle(href='#' data-toggle='push-menu')
+            i
+        // Top Menu Start
+        .navbar-custom-menu
+          ul.nav.navbar-nav
+            // User Account
+            li.dropdown.custom-dropdown.user.user-menu
+              a.nav-link(href='/logout')
+                i.icon-exit_to_app.white-text
+  .page.has-sidebar-left
+    header.my-3
+      .container-fluid
+        .row
+          .col
+            h1
+              i.icon-megaphone
+              |  Dodaj ogłoszenie
+      form(action = "/noticeupdate" method = "post" id = "upd")
+        .container
+          .form-group.mt-4
+            textarea(cols='50' rows='10' name="trescOgloszenia" id="pole" class='card-body rounded')
+            br
+            br
+            button(type='submit' class="btn btn-primary purple" style="width: 100px" name='btn') Wyślij
+
+  script.
+    var form = $('#upd');
+    var area = document.getElementById('pole');
+    form.submit(function (prev) {
+        prev.preventDefault();
+        $.ajax({
+            type: form.attr('method'),
+            url: form.attr('action'),
+            data: form.serialize(),
+            success: function (data) {
+                Swal.fire('Ogłoszenie dodane pomyślnie',
+                '',
+                'success');
+                area.value = '';
+            },
+            error: function (data) {
+                Swal.fire('Dodawanie nie powiodło się',
+                '',
+                'error');
+                area.value = '';
+            },
+        });
+    });
+  script(src='assets/js/app.js')

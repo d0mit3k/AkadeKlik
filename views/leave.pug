@@ -1,0 +1,261 @@
+doctype html
+head
+  meta(charset='utf-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
+  meta(name='description' content='')
+  meta(name='author' content='')
+  link(rel='icon' href='assets/img/admico.ico' type='image/x-icon')
+  title Nocne wyjście - AkadeKlik
+  link(rel='stylesheet' href='assets/css/app.css')
+  link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Josefin%20Sans')
+  script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js")
+  script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js")
+  style.
+    .loader {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #F5F8FA;
+    z-index: 9998;
+    text-align: center;
+    }
+    .plane-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    }
+    h1.logo {
+    font-family: "Josefin Sans", sans-serif;
+    font-weight: bold;
+    }
+    img.logo {
+    width: 60px;
+    }
+    .purple {
+      background-color: #714eff !important;
+    }
+        li.active {
+      background-color: #ecf0f5 !important;
+      opacity: 0.9;
+    }
+    a.active {
+      color: black !important;
+    }
+    .offcanvas .sidebar-menu>li.active:after {
+      background-color: #714eff !important;
+      opacity: 0.75;
+    }
+    .paper-nav-toggle i:before,:after{
+      background-color: white !important;
+    }
+    .paper-nav-toggle i{
+      background-color: white !important;
+    }
+    .table th {
+      border-top: none;
+    }
+    .count{
+      text-align: left !important;
+    }
+    td.status {
+      min-width:149px;
+    }
+    .center {
+      position: relative;
+      justify-content: center;
+    }
+    .close:focus {
+      outline:0;
+      border:0px solid #fff; 
+      outline:none;
+    }
+#loader.loader
+  .plane-container
+    .preloader-wrapper.small.active
+      .spinner-layer.spinner-blue
+        .circle-clipper.left
+          .circle
+        .gap-patch
+          .circle
+        .circle-clipper.right
+          .circle
+      .spinner-layer.spinner-red
+        .circle-clipper.left
+          .circle
+        .gap-patch
+          .circle
+        .circle-clipper.right
+          .circle
+      .spinner-layer.spinner-yellow
+        .circle-clipper.left
+          .circle
+        .gap-patch
+          .circle
+        .circle-clipper.right
+          .circle
+      .spinner-layer.spinner-green
+        .circle-clipper.left
+          .circle
+        .gap-patch
+          .circle
+        .circle-clipper.right
+          .circle
+#app
+  aside.main-sidebar.fixed.offcanvas.shadow(data-toggle='offcanvas')
+    section.sidebar
+      .relative
+        .user-panel.p-3.light.mb-2
+          div
+            .float-left.image
+              img.logo(src='assets/img/logo.png')
+            .float-right.info
+              h1.logo.mt-3.mr-3 AkadeKlik
+      ul.sidebar-menu
+        li.header
+          strong Menu
+        li.treeview
+          a(href='/admin_panel')
+            i.icon.icon-home2.purple-text.s-18
+            | Strona g&lstrok;&oacute;wna
+        li.treeview
+          a(href='/studentreg')
+            i.icon.icon-document-add.light-green-text.s-18
+            | Rejestracja studenta
+        li.treeview
+          a(href='/studentdetails')
+            i.icon.icon-account_box.text-blue.s-18
+            | Lista student&oacute;w
+        li.treeview
+          a(href='/hosteldetails')
+            i.icon.icon-note-list.text-black.s-18
+            | Lista akademik&oacute;w
+        li.treeview
+          a(href='/complaint')
+            i.icon.icon-flag3.text-red.s-18
+            | Skargi
+        li.treeview
+          a(href='/attendance')
+            i.icon.icon-check.light-green-text.s-18
+            | Frekwencja
+        li.treeview.active
+          a.active(href='/leave')
+            i.icon.icon-brightness_2.text-blue.s-18
+            | Nocne wyj&sacute;cie
+        li.treeview
+          a(href='/noticeupdate')
+            i.icon.icon-megaphone.purple-text.s-18
+            | Dodaj og&lstrok;oszenie
+
+  .has-sidebar-left
+    .pos-f-t
+      #navbarToggleExternalContent.collapse
+        .bg-dark.pt-2.pb-2.pl-4.pr-2
+          a(href='#' data-toggle='collapse' data-target='#navbarToggleExternalContent' aria-expanded='false' aria-label='Toggle navigation')
+            i
+    .sticky
+      .navbar.navbar-expand.navbar-dark.d-flex.justify-content-between.bd-navbar.deep-purple.accent-2.text-white
+        .relative
+          a.paper-nav-toggle.pp-nav-toggle(href='#' data-toggle='push-menu')
+            i
+        // Top Menu Start
+        .navbar-custom-menu
+          ul.nav.navbar-nav
+            // User Account
+            li.dropdown.custom-dropdown.user.user-menu
+              a.nav-link(href='/logout')
+                i.icon-exit_to_app.white-text
+  .page.has-sidebar-left
+    header.my-3
+      .container-fluid
+        .row
+          .col
+            h1
+              i.icon-brightness_2
+              |  Nocne wyjście
+      form(action = "/attendance" method = "post")
+    .container
+      a(href="/nightout_history" class="btn btn-primary purple m-4" style="float:right") Historia
+      .input-group.input-group-sm(style='width: 300px;')
+        button.btn.btn-secondary.disabled.purple.shadow-none
+          i.icon-search
+        input.form-control.float-right(type="text" id="myInput" class="form-control" placeholder='Szukaj')
+      .box-body.table-responsive.no-padding
+        table.table.table-hover.white
+          tbody
+            tr
+              th Numer
+              th Data zgłoszenia
+              th Student
+              th Szczegóły
+          tbody(id="tabela")
+            -if(data.length > 0)
+              each dat in data
+                tr
+                  td #{dat.id}
+                  td #{dat.applied_date}
+                  td #{dat.fullname}
+                  td
+                    button(type="button" class="details-button btn btn-danger" data-toggle="modal" data-target=`#details_${dat.id}`) Wyświetl szczegóły
+                    .modal(id=`details_${dat.id}`)
+                      .modal-dialog
+                        .modal-content
+
+                          .modal-header
+                            h4.modal-title Szczegóły wyjścia
+                            button.close(type='button' data-dismiss='modal') &times;
+
+                          .modal-body
+                            form(action="/updateleave/"+dat.id, method="post") 
+                              table.table.table-bordered
+                                  tr
+                                    th Numer zgłoszenia:
+                                    td #{dat.id}
+                                  tr
+                                    th Dane studenta:
+                                    td #{dat.fullname}
+                                  tr
+                                    th Numer pokoju:
+                                    td #{dat.room_no}
+                                  tr
+                                    th Powód:
+                                    td #{dat.reason}
+                                  tr
+                                    th Data wyjścia:
+                                    td #{dat.going_date}
+                                  tr
+                                    th Data powrotu:
+                                    td #{dat.return_date}
+                                  tr
+                                    th Dane opiekuna:
+                                    td #{dat.fathername}
+                                  tr
+                                    th Kontakt do opiekuna:
+                                    td #{dat.gcontact}
+                                  tr
+                                    th Decyzja:
+                                    td
+                                      .row
+                                        .col
+                                          input(type="radio" name="leave" value='Zgoda')
+                                          label(for="leave") Zgoda
+                                        .col
+                                          input(type="radio" name="leave" value='Odmowa')
+                                          label(for="leave") Odmowa
+                                          
+                              button.center(type="submit" class="btn btn-primary btn-block purple d-flex justify-content-center") Gotowe
+            -else
+              tr
+                td(style="text-align:center" colspan="9") Brak zgłoszeń
+
+  script.
+    $(document).ready(function(){
+      $('#myInput').on("keyup",function(){
+        var value = $(this).val().toLowerCase();
+        $("#tabela tr").filter(function(){
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        })
+      })
+    });
+  script(src='assets/js/app.js')

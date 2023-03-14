@@ -1,0 +1,15 @@
+.loginbox
+    form(action='/admin_reg' method='post' autocomplete='off')
+      h3 Rejestracja nowego administratora
+      .form-group
+        label(for='username') Nazwa użytkownika
+        div
+          input(type='text' class="form-control" name='username' placeholder='Podaj nazwę użytkownika' required='')
+        br
+      .form-group
+        label(for='password') Hasło
+        div
+          input(type='password' class="form-control" name='password' placeholder='Podaj hasło' required='')
+        br
+      button(type='submit' class="btn btn-primary") Wyślij
+

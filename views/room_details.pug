@@ -1,0 +1,275 @@
+doctype html
+head
+  meta(charset='utf-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
+  meta(name='description' content='')
+  meta(name='author' content='')
+  link(rel='icon' href='/assets/img/admico.ico' type='image/x-icon')
+  title Informacje o pokoju - AkadeKlik
+  link(rel='stylesheet' href='/assets/css/app.css')
+  link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Josefin%20Sans')
+  script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js")
+  script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js")
+  style.
+    .loader {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #F5F8FA;
+    z-index: 9998;
+    text-align: center;
+    }
+    .plane-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    }
+    h1.logo {
+    font-family: "Josefin Sans", sans-serif;
+    font-weight: bold;
+    }
+    img.logo {
+    width: 60px;
+    }
+    .purple {
+      background-color: #714eff !important;
+    }
+        li.active {
+      background-color: #ecf0f5 !important;
+      opacity: 0.9;
+    }
+    a.active {
+      color: black !important;
+    }
+    .offcanvas .sidebar-menu>li.active:after {
+      background-color: #714eff !important;
+      opacity: 0.75;
+    }
+    .paper-nav-toggle i:before,:after{
+      background-color: white !important;
+    }
+    .paper-nav-toggle i{
+      background-color: white !important;
+    }
+    tr.nobor {
+      border: none !important;
+    }
+#loader.loader
+  .plane-container
+    .preloader-wrapper.small.active
+      .spinner-layer.spinner-blue
+        .circle-clipper.left
+          .circle
+        .gap-patch
+          .circle
+        .circle-clipper.right
+          .circle
+      .spinner-layer.spinner-red
+        .circle-clipper.left
+          .circle
+        .gap-patch
+          .circle
+        .circle-clipper.right
+          .circle
+      .spinner-layer.spinner-yellow
+        .circle-clipper.left
+          .circle
+        .gap-patch
+          .circle
+        .circle-clipper.right
+          .circle
+      .spinner-layer.spinner-green
+        .circle-clipper.left
+          .circle
+        .gap-patch
+          .circle
+        .circle-clipper.right
+          .circle
+#app
+  aside.main-sidebar.fixed.offcanvas.shadow(data-toggle='offcanvas')
+    section.sidebar
+      .relative
+        .user-panel.p-3.light.mb-2
+          div
+            .float-left.image
+              img.logo(src='/assets/img/logo.png')
+            .float-right.info
+              h1.logo.mt-3.mr-3 AkadeKlik
+      ul.sidebar-menu
+        li.header
+          strong Menu
+        li.treeview
+          a(href='/admin_panel')
+            i.icon.icon-home2.purple-text.s-18
+            | Strona g&lstrok;&oacute;wna
+        li.treeview
+          a(href='/studentreg')
+            i.icon.icon-document-add.light-green-text.s-18
+            | Rejestracja studenta
+        li.treeview
+          a(href='/studentdetails')
+            i.icon.icon-account_box.text-blue.s-18
+            | Lista student&oacute;w
+        li.treeview.active
+          a.active(href='/hosteldetails')
+            i.icon.icon-note-list.text-black.s-18
+            | Lista akademik&oacute;w
+        li.treeview
+          a(href='/complaint')
+            i.icon.icon-flag3.text-red.s-18
+            | Skargi
+        li.treeview
+          a(href='/attendance')
+            i.icon.icon-check.light-green-text.s-18
+            | Frekwencja
+        li.treeview
+          a(href='/leave')
+            i.icon.icon-brightness_2.text-blue.s-18
+            | Nocne wyj&sacute;cie
+        li.treeview
+          a(href='/noticeupdate')
+            i.icon.icon-megaphone.purple-text.s-18
+            | Dodaj og&lstrok;oszenie
+
+  .has-sidebar-left
+    .pos-f-t
+      #navbarToggleExternalContent.collapse
+        .bg-dark.pt-2.pb-2.pl-4.pr-2
+          a(href='#' data-toggle='collapse' data-target='#navbarToggleExternalContent' aria-expanded='false' aria-label='Toggle navigation')
+            i
+    .sticky
+      .navbar.navbar-expand.navbar-dark.d-flex.justify-content-between.bd-navbar.deep-purple.accent-2.text-white
+        .relative
+          a.paper-nav-toggle.pp-nav-toggle(href='#' data-toggle='push-menu')
+            i
+        // Top Menu Start
+        .navbar-custom-menu
+          ul.nav.navbar-nav
+            // User Account
+            li.dropdown.custom-dropdown.user.user-menu
+              a.nav-link(href='/logout')
+                i.icon-exit_to_app.white-text
+  .page.has-sidebar-left
+    header.my-3
+      .container-fluid
+        .row
+          .col
+            h1
+              i.icon-note-list
+              |  Informacje o pokoju
+      .container
+    table(class='table table-bordered white w-50 p-3 ml-5' id='tabela')
+      each dat in data[0]
+        tr
+          th Nazwa akademika :
+          td #{dat.hostel_no}
+        tr
+          th Numer pokoju :
+          td #{dat.room_no}
+        tr
+          th Liczba łóżek :
+          td #{dat.total_bed}
+        tr
+          th Zajętych łóżek :
+          td #{dat.occupied_bed}
+        tr
+          th Wolnych łóżek :
+          td #{dat.available_bed}
+        tr
+          th Stan pokoju :
+          td(id="status" data-control=`${dat.status}`) #{dat.status}
+    table(class='table table-bordered w-50 p-3 ml-5' id='tabela')
+      thead
+        th(class='white') Numer
+        th(class='white') Dane studenta
+        th(colspan=2)(class='white') Szczegóły
+      tbody
+        -if(data[2].length > 0)
+          each dat in data[2]
+            tr
+              td(class='white') #{dat.id}
+              td(class='white') #{dat.fullname}
+              td(class='white')
+                a(href="/studentdetails_info/"+dat.id class="btn btn-primary purple") Wyświetl szczegóły
+              td(class='white')
+                button(class="btn btn-danger" type="button" data-toggle="modal" data-target="#remove") Usuń
+                #remove.modal
+                  .modal-dialog.modal-dialog-centered
+                    .modal-content
+
+                      .modal-header
+                        h4.modal-title
+                        button.close(type='button' data-dismiss='modal') &times;
+
+                      .modal-body
+                        .container
+                          form(action="/removestud/"+dat.id, method="post")
+                            label(for="sure" class='h2') Czy aby na pewno?
+                            input(type="text", name="hostel" value=dat.hostel style="display:none")
+                            input(type="text", name="room_no" value=dat.room_no style="display:none")
+                            .modal-footer.white    
+                                  button(type="submit" class="btn btn-danger m-2") Usuń
+                                  button(class="btn btn-primary purple" data-dismiss='modal') Anuluj
+        -else
+          tr.nobor(class='white')
+            td(colspan="4")
+              h5(style="text-align:center") Pokój jest pusty
+        tr.nobor(class='border:0px;')
+          td(colspan="4")(class='border:0px')
+            button(class="btn btn-primary purple" type="button" id="add" data-toggle="modal" data-target="#addstudent") Dodaj studenta
+            #addstudent.modal
+              .modal-dialog.modal-dialog-centered.modal-lg
+                .modal-content
+
+                  .modal-header
+                    h4.modal-title Lista studentów
+                    button.close(type='button' data-dismiss='modal') &times;
+
+                  .modal-body
+                    .container
+                        .input-group.input-group-sm.mb-3(style='width: 300px;')
+                          button.btn.btn-secondary.disabled.purple.shadow-none
+                            i.icon-search
+                          input.form-control.float-right(type="text" id="myInput" class="form-control" placeholder='Szukaj')()
+                        table(class="table table-bordered")
+                          thead
+                            th Dane studenta
+                            td 
+                          tbody
+                            each dat in data[1]
+                              form(action="/allocateroom/"+dat.id, method="post")
+                                tr
+                                  each dat in data[0]
+                                    td(style="display:none")
+                                      input(type="text" name="hostel_no" value=dat.hostel_no)
+                                    td(style="display:none")
+                                      input(type="text" name="room_no" value=dat.room_no)
+                                tr
+                                  td #{dat.fullname}
+                                  td 
+                                    button(type="submit" class="btn btn-danger") Dodaj
+
+            form
+              input(type="button" class="btn btn-primary purple mt-5" value="Powrót" onclick="history.go(-1)")
+  script.
+    $(document).ready(function(){
+      $('#myInput').on("keyup",function(){
+        var value = $(this).val().toLowerCase();
+        $("#myTable tr").filter(function(){
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        })
+      })
+    });
+
+  script.
+    $(document).ready(function(){
+      var status = $('#status').attr('data-control');
+      if(status == 'Pokój zajęty'){
+        $('#add').html('Brak wolnych miejsc');
+        $('#add').removeAttr('data-toggle');
+      }
+  
+    })
+  script(src='/assets/js/app.js')

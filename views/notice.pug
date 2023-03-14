@@ -1,0 +1,202 @@
+doctype html
+head
+  meta(charset='utf-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
+  meta(name='description' content='')
+  meta(name='author' content='')
+  link(rel='icon' href='assets/img/stdico.ico' type='image/x-icon')
+  title Nocne wyjście - AkadeKlik
+  link(rel='stylesheet' href='assets/css/app.css')
+  link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Josefin%20Sans')
+  style.
+    .loader {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #F5F8FA;
+    z-index: 9998;
+    text-align: center;
+    }
+    .plane-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    }
+    h1.logo {
+    font-family: "Josefin Sans", sans-serif;
+    font-weight: bold;
+    }
+    img.logo {
+    width: 60px;
+    }
+    .purple {
+      background-color: #714eff !important;
+    }
+    li.active {
+      background-color: #ecf0f5 !important;
+      opacity: 0.9;
+    }
+    a.active {
+      color: black !important;
+    }
+    .offcanvas .sidebar-menu>li.active:after {
+      background-color: #ff9800 !important;
+      opacity: 0.75;
+    }
+    .paper-nav-toggle i:before,:after{
+      background-color: white !important;
+    }
+    .paper-nav-toggle i{
+      background-color: white !important;
+    }
+    .table {
+      width: 75%;
+      position:relative;
+      left:10%;
+    }
+    .center {
+      position: relative;
+      justify-content: center;
+    }
+    .close:focus {
+      outline:0;
+      border:0px solid #fff; 
+      outline:none;
+    }
+    .table thead th {
+      color: black;
+      font-size: 14px;
+      font-weight: bold;
+    }
+    @media (max-width: 767px){
+      span {
+        display:none;
+      }
+    }
+    @media (min-width: 768px){
+      .navbar-nav>.user-menu .user-image {
+        margin-top: 0px;
+      }
+    }
+#loader.loader
+  .plane-container
+    .preloader-wrapper.small.active
+      .spinner-layer.spinner-blue
+        .circle-clipper.left
+          .circle
+        .gap-patch
+          .circle
+        .circle-clipper.right
+          .circle
+      .spinner-layer.spinner-red
+        .circle-clipper.left
+          .circle
+        .gap-patch
+          .circle
+        .circle-clipper.right
+          .circle
+      .spinner-layer.spinner-yellow
+        .circle-clipper.left
+          .circle
+        .gap-patch
+          .circle
+        .circle-clipper.right
+          .circle
+      .spinner-layer.spinner-green
+        .circle-clipper.left
+          .circle
+        .gap-patch
+          .circle
+        .circle-clipper.right
+          .circle
+#app
+  aside.main-sidebar.fixed.offcanvas.shadow(data-toggle='offcanvas')
+    section.sidebar
+      .relative
+        .user-panel.p-3.light.mb-2
+          div
+            .float-left.image
+              img.logo(src='assets/img/logoStd.png')
+            .float-right.info
+              h1.logo.mt-3.mr-3 AkadeKlik
+      ul.sidebar-menu
+        li.header
+          strong Menu
+        li.treeview
+          a(href='/studentdash')
+            i.icon.icon-home2.purple-text.s-18
+            | Strona g&lstrok;&oacute;wna
+        li.treeview
+          a(href='/studentprofile')
+            i.icon.icon-account_box.text-blue.s-18
+            | Dane studenta
+        li.treeview
+          a(href='/studentcomplaint')
+            i.icon.icon-flag3.text-red.s-18
+            | Skargi
+        li.treeview
+          a(href='/studentnightout')
+            i.icon.icon-brightness_2.text-blue.s-18
+            | Nocne wyjście
+        li.treeview.active
+          a.active(href='/notice')
+            i.icon.icon-megaphone.purple-text.s-18
+            | Ogłoszenia
+
+-var info = data[1]
+-if(info.length > 0)
+  each dat in info
+    .has-sidebar-left
+      .pos-f-t
+        #navbarToggleExternalContent.collapse
+          .bg-dark.pt-2.pb-2.pl-4.pr-2
+            a(href='#' data-toggle='collapse' data-target='#navbarToggleExternalContent' aria-expanded='false' aria-label='Toggle navigation')
+              i
+      .sticky
+        .navbar.navbar-expand.navbar-dark.d-flex.justify-content-between.bd-navbar.orange.text-white
+          .relative
+            a.paper-nav-toggle.pp-nav-toggle(href='#' data-toggle='push-menu')
+              i
+          // Top Menu Start
+          .navbar-custom-menu
+            ul.nav.navbar-nav
+              li.dropdown.custom-dropdown.user.user-menu
+                div.nav-link(data-toggle='dropdown')
+                  span #{dat.fullname}
+                  img(src=`/images/upload/${dat.pic_name}`, class="user-image ml-2" alt="User Image")
+              // User Account
+              li.dropdown.custom-dropdown.user.user-menu
+                a.nav-link(href='/logout')
+                  i.icon-exit_to_app.white-text
+    .page.has-sidebar-left
+      header.my-3
+        .container-fluid
+          .row
+            .col
+              h1
+                i.icon-megaphone
+                |  Ogłoszenia
+          .container
+      table.table.table-bordered.white.mt-4
+        thead.thead
+          tr
+            th Treść ogłoszenia
+            th Opublikowano
+        tbody
+          -var notices = data[0]
+          -if(notices.length > 0)
+            each dat in notices
+              tr
+                td #{dat.notice}
+                td #{dat.update_date}
+          -else
+            tr
+              td(style="text-align:center" colspan="9") Brak zgłoszeń
+  script(src='assets/js/app.js')
+
+
+
+
+  
